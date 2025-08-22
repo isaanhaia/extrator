@@ -1,25 +1,25 @@
-import { PALAVRAS_INDESEJAVEIS } from "./palavrasIndesejaveis";
+import { PALAVRAS_RUINS } from "./palavrasRuins.js";
 
-const botaoExtraiPalavras = document.querySelector('#botao-palavrachave');
+const botaoMostraPalavras = document.querySelector('#botao-palavrachave');
 
-botaoExtraiPalavras.addEventListener('click', exibePalavrasChave );
+botaoMostraPalavras.addEventListener('click', mostraPalavrasChave);
 
-function exibePalavrasChave() {
+function mostraPalavrasChave() {
     const texto = document.querySelector('#entrada-de-texto').value;
     const campoResultado = document.querySelector('#resultado-palavrachave');
-    const palavrasChave = analisaTexto(texto);
+    const palavrasChave = processaTexto(texto);
 
     campoResultado.textContent = palavrasChave.join(", ");
 }
 
-function analisaTexto(texto) {
+function processaTexto(texto) {
     let palavras = texto.split(/\P{L}+/u);
 
     for (let i in palavras) {
         palavras[i] = palavras[i].toLowerCase();
     }
 
-    palavras = tiraPalavrasIndesejaveis(palavras);
+    palavras = tiraPalavrasRuins(palavras);
 
     const frequencias = contaFrequencias(palavras);
     let ordenadas = Object.keys(frequencias).sort(ordenaPalavra);
@@ -44,12 +44,12 @@ function contaFrequencias(palavras) {
     return frequencias;
 }
 
-function tiraPalavrasIndesejaveis(palavras) {
-    const palavrasDesejaveis = [];
+function tiraPalavrasRuins(palavras) {
+    const palavrasBoas = [];
     for (let palavra of palavras) {
-        if (!PALAVRAS_INDESEJAVEIS.has(palavra) && palavra.length > 2) {
-            palavrasDesejaveis.push(palavra);
+        if (!PALAVRAS_RUINS.has(palavra) && palavra.length > 2) {
+            palavrasBoas.push(palavra);
         }
     }
-    return palavrasDesejaveis;
+    return palavrasBoas;
 }

@@ -1,6 +1,6 @@
 import { PALAVRAS_INDESEJAVEIS } from "./palavrasIndesejaveis";
 
-const BotaoConceitos = document.querySelector('#botao-palavrachave');
+const BotaoConceitos = document.querySelector('#botao-conceitos');
 
 BotaoConceitos.addEventListener('click', mostraConceitos);
 

@@ -1,10 +1,10 @@
 import { PALAVRAS_INDESEJAVEIS } from "./palavrasIndesejaveis";
 
-const BotaoConceitos = document.querySelector('#botao-conceitos');
+const botaoExtraiPalavras = document.querySelector('#botao-palavrachave');
 
-BotaoConceitos.addEventListener('click', mostraConceitos);
+botaoExtraiPalavras.addEventListener('click', exibePalavrasChave );
 
-function mostraConceitos) {
+function exibePalavrasChave() {
     const texto = document.querySelector('#entrada-de-texto').value;
     const campoResultado = document.querySelector('#resultado-palavrachave');
     const palavrasChave = analisaTexto(texto);
@@ -12,7 +12,7 @@ function mostraConceitos) {
     campoResultado.textContent = palavrasChave.join(", ");
 }
 
-function analisaTexto (texto) {
+function analisaTexto(texto) {
     let palavras = texto.split(/\P{L}+/u);
 
     for (let i in palavras) {
@@ -21,7 +21,7 @@ function analisaTexto (texto) {
 
     palavras = tiraPalavrasIndesejaveis(palavras);
 
-    const frequencias = expoeFrequencias(palavras);
+    const frequencias = contaFrequencias(palavras);
     let ordenadas = Object.keys(frequencias).sort(ordenaPalavra);
 
     function ordenaPalavra(p1, p2) {
@@ -31,7 +31,7 @@ function analisaTexto (texto) {
     return ordenadas.slice(0, 10);
 }
 
-function expoeFrequencias(palavras) {
+function contaFrequencias(palavras) {
     let frequencias = {};
     for (let i of palavras) {
         frequencias[i] = 0;

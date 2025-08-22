@@ -22,9 +22,9 @@ function analisaTexto(texto) {
     palavras = tiraPalavrasRuins(palavras);
 
     const frequencias = contaFrequencias(palavras);
-    let ordenadas = Object.keys(frequencias).sort(ordenaPalavra);
+    let ordenadas = Object.keys(frequencias).sort(organizaPalavra);
 
-    function ordenaPalavra(p1, p2) {
+    function organizaPalavra(p1, p2) {
         return frequencias[p2] - frequencias[p1];
     }
 

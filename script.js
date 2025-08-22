@@ -2,7 +2,7 @@ import { PALAVRAS_INDESEJAVEIS } from "./palavrasIndesejaveis";
 
 const BotaoConceitos = document.querySelector('#botao-palavrachave');
 
-BotaoConceitos.addEventListener('click', mostraPalavrasChave);
+BotaoConceitos.addEventListener('click', mostraConceitos);
 
 function mostraConceitos) {
     const texto = document.querySelector('#entrada-de-texto').value;

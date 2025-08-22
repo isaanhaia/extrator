@@ -1,18 +1,18 @@
 import { PALAVRAS_RUINS } from "./palavrasRuins.js";
 
-const botaoMostraPalavras = document.querySelector('#botao-palavrachave');
+const botaoExtraiPalavras = document.querySelector('#botao-palavrachave');
 
-botaoMostraPalavras.addEventListener('click', mostraPalavrasChave);
+botaoExtraiPalavras.addEventListener('click', ExtraiPalavrasChave);
 
-function mostraPalavrasChave() {
+function ExtraiPalavrasChave() {
     const texto = document.querySelector('#entrada-de-texto').value;
     const campoResultado = document.querySelector('#resultado-palavrachave');
-    const palavrasChave = processaTexto(texto);
+    const palavrasChave = analisaTexto(texto);
 
     campoResultado.textContent = palavrasChave.join(", ");
 }
 
-function processaTexto(texto) {
+function analisaTexto(texto) {
     let palavras = texto.split(/\P{L}+/u);
 
     for (let i in palavras) {

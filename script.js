@@ -7,12 +7,12 @@ BotaoConceitos.addEventListener('click', mostraConceitos);
 function mostraConceitos) {
     const texto = document.querySelector('#entrada-de-texto').value;
     const campoResultado = document.querySelector('#resultado-palavrachave');
-    const palavrasChave = processaTexto(texto);
+    const palavrasChave = analisaTexto(texto);
 
     campoResultado.textContent = palavrasChave.join(", ");
 }
 
-function analisaTexto(texto) {
+function analisaTexto (texto) {
     let palavras = texto.split(/\P{L}+/u);
 
     for (let i in palavras) {
@@ -21,7 +21,7 @@ function analisaTexto(texto) {
 
     palavras = tiraPalavrasIndesejaveis(palavras);
 
-    const frequencias = contaFrequencias(palavras);
+    const frequencias = expoeFrequencias(palavras);
     let ordenadas = Object.keys(frequencias).sort(ordenaPalavra);
 
     function ordenaPalavra(p1, p2) {
